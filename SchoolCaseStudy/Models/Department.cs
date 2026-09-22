@@ -13,7 +13,7 @@ namespace SchoolCaseStudy.Models
         [MaxLength(500)]
         public string? Description { get; set; }
 
-        // One Department → Many Teachers
-        public ICollection<Teacher> Teachers { get; set; } = new List<Teacher>();
+       
+        public ICollection<Teacher> ?Teachers { get; set; } = new List<Teacher>();
     }
 }

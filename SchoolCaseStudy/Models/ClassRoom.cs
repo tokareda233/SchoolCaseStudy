@@ -18,7 +18,7 @@ namespace SchoolCaseStudy.Models
         [Range(1, 100)]
         public int Capacity { get; set; }
 
-        // One Classroom → Many Students
-        public ICollection<Student> Students { get; set; } = new List<Student>();
+       
+        public ICollection<Student> ?Students { get; set; } = new List<Student>();
     }
 }

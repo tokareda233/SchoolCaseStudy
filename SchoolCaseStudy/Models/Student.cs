@@ -26,14 +26,14 @@ namespace SchoolCaseStudy.Models
         [Required]
         public DateTime DateOfBirth { get; set; }
 
-        // Foreign Key
+        
         [Required]
         public int ClassRoomId { get; set; }
 
-        // Navigation Property
-        public ClassRoom ClassRoom { get; set; }
+        
+        public ClassRoom? ClassRoom { get; set; }
 
-        // One Student → Many Enrollments
-        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+        
+        public ICollection<Enrollment> ?Enrollments { get; set; } = new List<Enrollment>();
     }
 }

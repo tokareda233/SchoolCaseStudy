@@ -27,14 +27,14 @@ namespace SchoolCaseStudy.Models
         [Range(0, double.MaxValue)]
         public decimal Salary { get; set; }
 
-        // Foreign Key
+       
         [Required]
         public int DepartmentId { get; set; }
 
-        // Navigation Property
-        public Department Department { get; set; }
+       
+        public Department ?Department { get; set; }
 
-        // One Teacher → Many Subjects
-        public ICollection<Subject> Subjects { get; set; } = new List<Subject>();
+      
+        public ICollection<Subject> ?Subjects { get; set; } = new List<Subject>();
     }
 }

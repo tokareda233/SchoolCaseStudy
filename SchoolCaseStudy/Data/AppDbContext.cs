@@ -14,13 +14,13 @@ namespace SchoolCaseStudy.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS04;Initial Catalog=SchoolAPI;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS04;Initial Catalog=schoolD;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
             base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // ========================= // Department // =========================
+           
             modelBuilder.Entity<Department>() 
             .HasKey(d => d.Id);
 
@@ -33,7 +33,7 @@ namespace SchoolCaseStudy.Data
             .Property(d => d.Description) 
             .HasMaxLength(500) 
             .IsRequired(false);
-            // ========================= // Teacher // =========================
+          
             modelBuilder.Entity<Teacher>() 
             .HasKey(t => t.Id); 
             
@@ -62,13 +62,13 @@ namespace SchoolCaseStudy.Data
             .IsRequired() 
             .HasColumnType("decimal(18,2)"); 
             
-            // Department → Teacher
+           
             modelBuilder.Entity<Teacher>() 
             .HasOne(t => t.Department) 
             .WithMany(d => d.Teachers) 
             .HasForeignKey(t => t.DepartmentId) 
             .OnDelete(DeleteBehavior.Restrict); 
-            // ========================= // Subject // =========================
+           
             modelBuilder.Entity<Subject>() 
             .HasKey(s => s.Id); 
             
@@ -86,7 +86,7 @@ namespace SchoolCaseStudy.Data
             .Property(s => s.MaxGrade) 
             .IsRequired();
             
-            // Teacher → Subject
+            
             
             modelBuilder.Entity<Subject>() 
             .HasOne(s => s.Teacher) 
@@ -94,7 +94,7 @@ namespace SchoolCaseStudy.Data
             .HasForeignKey(s => s.TeacherId) 
             .OnDelete(DeleteBehavior.Restrict); 
             
-            // ========================= // ClassRoom // =========================
+          
             
             modelBuilder.Entity<ClassRoom>() 
             .HasKey(c => c.Id);
@@ -114,7 +114,7 @@ namespace SchoolCaseStudy.Data
             .IsRequired(); 
             
             
-            // ========================= // Student // =========================
+            
             modelBuilder.Entity<Student>() 
              .HasKey(s => s.Id); 
             
@@ -142,14 +142,14 @@ namespace SchoolCaseStudy.Data
             .Property(s => s.DateOfBirth) 
             .IsRequired(); 
             
-            // ClassRoom → Student
+            
             modelBuilder.Entity<Student>() 
             .HasOne(s => s.ClassRoom) 
             .WithMany(c => c.Students) 
             .HasForeignKey(s => s.ClassRoomId) 
             .OnDelete(DeleteBehavior.Restrict); 
             
-            // ========================= // Enrollment // =========================
+           
             modelBuilder.Entity<Enrollment>() 
             .HasKey(e => e.Id); 
 
@@ -162,14 +162,14 @@ namespace SchoolCaseStudy.Data
             .HasColumnType("decimal(5,2)") 
             .IsRequired(); 
             
-            // Student → Enrollment
+           
             modelBuilder.Entity<Enrollment>() 
             .HasOne(e => e.Student) 
             .WithMany(s => s.Enrollments) 
             .HasForeignKey(e => e.StudentId) 
             .OnDelete(DeleteBehavior.Cascade); 
             
-            // Subject → Enrollment
+           
             
             modelBuilder.Entity<Enrollment>() 
             .HasOne(e => e.Subject) 
@@ -177,7 +177,7 @@ namespace SchoolCaseStudy.Data
             .HasForeignKey(e => e.SubjectId) 
             .OnDelete(DeleteBehavior.Cascade); 
             
-            // ========================= // Prevent duplicate enrollment // =========================
+            
             modelBuilder.Entity<Enrollment>() 
             .HasIndex(e => new { e.StudentId, e.SubjectId }) .IsUnique(); 
             base.OnModelCreating(modelBuilder);

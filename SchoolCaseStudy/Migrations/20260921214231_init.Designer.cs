@@ -12,7 +12,7 @@ using SchoolCaseStudy.Data;
 namespace SchoolCaseStudy.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260916194842_init")]
+    [Migration("20260921214231_init")]
     partial class init
     {
         /// <inheritdoc />

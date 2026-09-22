@@ -17,14 +17,14 @@ namespace SchoolCaseStudy.Models
         [Range(1, 100)]
         public int MaxGrade { get; set; }
 
-        // Foreign Key
+      
         [Required]
         public int TeacherId { get; set; }
 
-        // Navigation Property
-        public Teacher Teacher { get; set; }
+    
+        public Teacher? Teacher { get; set; }
 
-        // One Subject → Many Enrollments
-        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+        
+        public ICollection<Enrollment> ?Enrollments { get; set; } = new List<Enrollment>();
     }
 }
