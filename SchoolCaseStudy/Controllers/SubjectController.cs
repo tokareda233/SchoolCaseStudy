@@ -15,6 +15,7 @@ namespace SchoolCaseStudy.Controllers
 
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
+
         public SubjectController(AppDbContext context)
         {
             _context = context;
@@ -27,7 +28,7 @@ namespace SchoolCaseStudy.Controllers
             _mapper = conf.CreateMapper();
         }
 
-
+        [HttpGet]
         public IActionResult GetAllSubjects()
         {
             var subjects = _context.Subjects.ToList();

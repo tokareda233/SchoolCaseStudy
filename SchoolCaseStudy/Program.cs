@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
 using SchoolCaseStudy.Data;
+using SchoolCaseStudy.Repo.Interfaces;
+using SchoolCaseStudy.Repo.Repos;
 
 namespace SchoolCaseStudy
 {
@@ -9,9 +11,13 @@ namespace SchoolCaseStudy
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddDbContext<AppDbContext>(options=>options
+            .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
             // Add services to the container.
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
+            builder.Services.AddScoped<IStudentRepo, StudentRepo>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
