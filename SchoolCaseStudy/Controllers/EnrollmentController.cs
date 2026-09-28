@@ -106,7 +106,7 @@ namespace SchoolCaseStudy.Controllers
 
             _mapper.Map(enrollmentDTO, enrollment);
 
-            _context.SaveChanges(enrollment);
+            _context.SaveChanges();
 
             
                

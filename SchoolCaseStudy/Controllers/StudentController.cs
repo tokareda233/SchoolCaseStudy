@@ -15,16 +15,11 @@ namespace SchoolCaseStudy.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
-        public StudentController(AppDbContext context)
+        public StudentController(AppDbContext context, IMapper mapper)
         {
             _context = context;
 
-            var conf = new MapperConfiguration(x =>
-            {
-                x.AddProfile<StudentProfile>();
-            });
-
-            _mapper = conf.CreateMapper();
+            _mapper = mapper;
         }
 
         [HttpGet]

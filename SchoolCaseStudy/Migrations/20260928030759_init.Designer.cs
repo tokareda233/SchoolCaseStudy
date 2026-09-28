@@ -12,7 +12,7 @@ using SchoolCaseStudy.Data;
 namespace SchoolCaseStudy.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260921214231_init")]
+    [Migration("20260928030759_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -47,6 +47,29 @@ namespace SchoolCaseStudy.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ClassRooms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Capacity = 30,
+                            GradeLevel = 10,
+                            Name = "Class A"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Capacity = 25,
+                            GradeLevel = 11,
+                            Name = "Class B"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Capacity = 30,
+                            GradeLevel = 12,
+                            Name = "Class C"
+                        });
                 });
 
             modelBuilder.Entity("SchoolCaseStudy.Models.Department", b =>
@@ -69,6 +92,20 @@ namespace SchoolCaseStudy.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Departments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Department of Computer Science",
+                            Name = "Computer Science"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Department of Information Technology",
+                            Name = "Information Technology"
+                        });
                 });
 
             modelBuilder.Entity("SchoolCaseStudy.Models.Enrollment", b =>
@@ -99,6 +136,72 @@ namespace SchoolCaseStudy.Migrations
                         .IsUnique();
 
                     b.ToTable("Enrollments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EnrollmentDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Grade = 90m,
+                            StudentId = 1,
+                            SubjectId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EnrollmentDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Grade = 85m,
+                            StudentId = 1,
+                            SubjectId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            EnrollmentDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Grade = 95m,
+                            StudentId = 2,
+                            SubjectId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EnrollmentDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Grade = 88m,
+                            StudentId = 2,
+                            SubjectId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EnrollmentDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Grade = 78m,
+                            StudentId = 3,
+                            SubjectId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EnrollmentDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Grade = 82m,
+                            StudentId = 3,
+                            SubjectId = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            EnrollmentDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Grade = 91m,
+                            StudentId = 4,
+                            SubjectId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            EnrollmentDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Grade = 87m,
+                            StudentId = 5,
+                            SubjectId = 2
+                        });
                 });
 
             modelBuilder.Entity("SchoolCaseStudy.Models.Student", b =>
@@ -139,6 +242,58 @@ namespace SchoolCaseStudy.Migrations
                     b.HasIndex("ClassRoomId");
 
                     b.ToTable("Students");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClassRoomId = 1,
+                            DateOfBirth = new DateTime(2009, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "ali.mohamed@student.com",
+                            FirstName = "Ali",
+                            LastName = "Mohamed",
+                            PhoneNumber = "01011111111"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ClassRoomId = 1,
+                            DateOfBirth = new DateTime(2009, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "sara.ahmed@student.com",
+                            FirstName = "Sara",
+                            LastName = "Ahmed",
+                            PhoneNumber = "01122222222"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ClassRoomId = 2,
+                            DateOfBirth = new DateTime(2008, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "youssef.mahmoud@student.com",
+                            FirstName = "Youssef",
+                            LastName = "Mahmoud",
+                            PhoneNumber = "01233333333"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClassRoomId = 2,
+                            DateOfBirth = new DateTime(2008, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "nour.khaled@student.com",
+                            FirstName = "Nour",
+                            LastName = "Khaled",
+                            PhoneNumber = "01044444444"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClassRoomId = 3,
+                            DateOfBirth = new DateTime(2007, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "mariam.tarek@student.com",
+                            FirstName = "Mariam",
+                            LastName = "Tarek",
+                            PhoneNumber = "01155555555"
+                        });
                 });
 
             modelBuilder.Entity("SchoolCaseStudy.Models.Subject", b =>
@@ -169,6 +324,32 @@ namespace SchoolCaseStudy.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("Subjects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Introduction to C# programming",
+                            MaxGrade = 100,
+                            Name = "C# Programming",
+                            TeacherId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Database concepts and SQL",
+                            MaxGrade = 100,
+                            Name = "Database",
+                            TeacherId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "HTML, CSS and web development",
+                            MaxGrade = 100,
+                            Name = "Web Development",
+                            TeacherId = 3
+                        });
                 });
 
             modelBuilder.Entity("SchoolCaseStudy.Models.Teacher", b =>
@@ -209,6 +390,38 @@ namespace SchoolCaseStudy.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("Teachers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DepartmentId = 1,
+                            Email = "ahmed.hassan@school.com",
+                            FirstName = "Ahmed",
+                            LastName = "Hassan",
+                            PhoneNumber = "01012345678",
+                            Salary = 15000m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DepartmentId = 1,
+                            Email = "mona.ali@school.com",
+                            FirstName = "Mona",
+                            LastName = "Ali",
+                            PhoneNumber = "01112345678",
+                            Salary = 14000m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DepartmentId = 2,
+                            Email = "omar.ibrahim@school.com",
+                            FirstName = "Omar",
+                            LastName = "Ibrahim",
+                            PhoneNumber = "01212345678",
+                            Salary = 13000m
+                        });
                 });
 
             modelBuilder.Entity("SchoolCaseStudy.Models.Enrollment", b =>

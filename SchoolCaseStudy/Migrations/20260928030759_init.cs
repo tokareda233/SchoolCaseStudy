@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace SchoolCaseStudy.Migrations
 {
     /// <inheritdoc />
@@ -136,6 +138,72 @@ namespace SchoolCaseStudy.Migrations
                         principalTable: "Subjects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "ClassRooms",
+                columns: new[] { "Id", "Capacity", "GradeLevel", "Name" },
+                values: new object[,]
+                {
+                    { 1, 30, 10, "Class A" },
+                    { 2, 25, 11, "Class B" },
+                    { 3, 30, 12, "Class C" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Departments",
+                columns: new[] { "Id", "Description", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Department of Computer Science", "Computer Science" },
+                    { 2, "Department of Information Technology", "Information Technology" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassRoomId", "DateOfBirth", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2009, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "ali.mohamed@student.com", "Ali", "Mohamed", "01011111111" },
+                    { 2, 1, new DateTime(2009, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "sara.ahmed@student.com", "Sara", "Ahmed", "01122222222" },
+                    { 3, 2, new DateTime(2008, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "youssef.mahmoud@student.com", "Youssef", "Mahmoud", "01233333333" },
+                    { 4, 2, new DateTime(2008, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "nour.khaled@student.com", "Nour", "Khaled", "01044444444" },
+                    { 5, 3, new DateTime(2007, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "mariam.tarek@student.com", "Mariam", "Tarek", "01155555555" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Teachers",
+                columns: new[] { "Id", "DepartmentId", "Email", "FirstName", "LastName", "PhoneNumber", "Salary" },
+                values: new object[,]
+                {
+                    { 1, 1, "ahmed.hassan@school.com", "Ahmed", "Hassan", "01012345678", 15000m },
+                    { 2, 1, "mona.ali@school.com", "Mona", "Ali", "01112345678", 14000m },
+                    { 3, 2, "omar.ibrahim@school.com", "Omar", "Ibrahim", "01212345678", 13000m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Subjects",
+                columns: new[] { "Id", "Description", "MaxGrade", "Name", "TeacherId" },
+                values: new object[,]
+                {
+                    { 1, "Introduction to C# programming", 100, "C# Programming", 1 },
+                    { 2, "Database concepts and SQL", 100, "Database", 2 },
+                    { 3, "HTML, CSS and web development", 100, "Web Development", 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Enrollments",
+                columns: new[] { "Id", "EnrollmentDate", "Grade", "StudentId", "SubjectId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 90m, 1, 1 },
+                    { 2, new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 85m, 1, 2 },
+                    { 3, new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 95m, 2, 1 },
+                    { 4, new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 88m, 2, 3 },
+                    { 5, new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 78m, 3, 2 },
+                    { 6, new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 82m, 3, 3 },
+                    { 7, new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 91m, 4, 1 },
+                    { 8, new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 87m, 5, 2 }
                 });
 
             migrationBuilder.CreateIndex(
