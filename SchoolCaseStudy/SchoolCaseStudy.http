@@ -1,0 +1,6 @@
+@SchoolCaseStudy_HostAddress = http://localhost:5191
+
+GET {{SchoolCaseStudy_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
